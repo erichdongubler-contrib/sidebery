@@ -1,4 +1,5 @@
 import { Containers } from 'src/services/containers'
+import { translate } from 'src/dict'
 import * as IPC from 'src/services/ipc'
 import * as Logs from 'src/services/logs'
 import { Tabs } from 'src/services/tabs.bg'
@@ -6,7 +7,9 @@ import { Windows } from 'src/services/windows'
 import { Container, InstanceType } from 'src/types'
 
 function setupListeners() {
-  browser.omnibox.setDefaultSuggestion({ description: 'Type the name of the container you want for this tab…' })
+  browser.omnibox.setDefaultSuggestion({
+    description: translate('omnibox.container_switch.prompt')
+  })
 
   function matchContainers(input: string): Container[] {
     // TODO: order by score of some sort?
